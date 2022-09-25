@@ -1,0 +1,38 @@
+MUMT301-2021 Assignment 1
+QUESTIONNAIRE!
+
+The following questionnaire seeks to understand your previous knowledge about some of the concepts that we will learn in class during the coming term.
+
+1. Do you know any programming languages? If you do, which ones?
+   I know Java very well and I am trying to learn Python.
+
+2. What is your primary computer operating system (OS)?
+   Windows 10.
+
+3. Do you own a smartphone, tablet, or mobile device? What is your favourite OS for mobile devices?
+   I have an Iphone Xr. I used to really like the Android OS, but now I do not really have a preference.
+
+4. Do you use any social networking services? If you do, which ones? Why?
+   I do not use social networking services.
+
+5. Expand the following acronyms and do research about their meaning. You may look them up if you don't know:
+
+    HTTP stands for "Hypertext Transfer Protocol", which is a standard tool to create the text and basic layout of websites.
+    REST stands for "Representational State Transfer" and it is an API that makes a call from the "client" to a "server" and you get back data through HTTP protocol.
+    API  stands for "Application Programing Interface" and it is a way for 2 or more computer programs to communicate with each other.
+
+6. Do you play a musical instrument or sing? If so, how much experience do you have?
+   I played piano for about 13 years and the Cello for around 6.
+
+7. Can you read music notation? If so, how well?
+   I can read music notation quite well, unless the notation calls for improvisation.
+
+8. How large is your personal music collection? Estimate the number of artists, albums, and songs. If instead you listen to music using streaming services, how many playlists, artists, albums, and songs do you have in your account?
+   I listen to a lot of artists, albeit only a couple of songs for each. I estimate that the number of artists is around 50, albums around 40, and songs over 200.
+
+9. How do you search and find new music? How do you think this affects the types of artists that you end up listening to?
+   Spotify and Youtube are my primary mode of finding new music. However, whenever I play a new video game, I pay very close attention to the soundtrack and I end up discovering new artists or new genres that way.
+
+10. Name two musical artists that you like. What do you find interesting about their music that makes you like them?
+   I like Tyler the Creator because he likes to experiment and isn't chained down to a single genre. He also releases very "soundscape"-like music at times that I very much enjoy. 
+   I also like Erroll Garner because his jazz style is unique and fun to listen to. The fact that he never learned the piano nor how to read musical notation absolutely amazes me.
