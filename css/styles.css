@@ -1,0 +1,10 @@
+body {
+  background-image: url("../images/pastel_beige.png");
+}
+
+hr  {
+  border-style: dotted none none;
+  border-width: 10px;
+  border-color:#46ED9F;
+  width: 30%;
+}
