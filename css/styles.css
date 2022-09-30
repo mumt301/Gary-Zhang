@@ -11,9 +11,15 @@ hr  {
   width: 95%;
 }
 
-h1, h3, main {
+h1, h3 {
+  color: #562B08;
   text-align: center;
 }
+
+ main {
+  text-align: center;
+}
+
 
 p {
   font-size: larger;
