@@ -1,6 +1,9 @@
 body{
  background-color: #181818;
+ text-align: center;
 }
+
+
 
 div{
  padding : 1%;
@@ -15,10 +18,21 @@ img {
     width:  285px;
     height: 285px;
     /*object-fit: cover;*/
+    }
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+audio {
+        height: 0px;
+        width: 0px;
+    }
 
 /******************************************/
 
-}
+
 
 .left{
     float: left;
@@ -28,25 +42,30 @@ img {
     float: left;
   /*  background-color:gray*/
   }
+
+.font{
+  color: #E9DAC1;
+}
+
 /**********************************************/
 
 div.Goblin:hover{
-  background-color: Blue;
+  background-color: #256D85;
 }
 
 div.Wolf:hover{
-  background-color: red;
+  background-color: #8BBCCC;
 }
 
 div.CherryBomb:hover{
-  background-color: turquoise;
+  background-color: #FF1E1E;
 }
 div.FlowerBoy:hover{
-  background-color: orange;
+  background-color: #FD841F;
 }
 
 div.IGOR:hover{
-  background-color: pink;
+  background-color: #FF87B2;
 }
 
 div.CMIYGL:hover{
