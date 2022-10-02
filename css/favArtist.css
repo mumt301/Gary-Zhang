@@ -1,6 +1,34 @@
+/**********************Tag Selectors********************/
+body {
+  background-color: #FFE7CC;
+}
+
+
+h1 {
+  color: #562B08;
+  text-align: center;
+}
+
+table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/********************Class selectors**********************/
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  /*margin-bottom: auto*/
+  width: 50%;
+}
+
+
+
 .rSide {
   width: 20%;
   position: fixed;
   right: 10px;
-
 }
