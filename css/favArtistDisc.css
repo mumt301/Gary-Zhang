@@ -1,0 +1,54 @@
+body{
+ background-color: #181818;
+}
+
+div{
+ padding : 1%;
+ color: white;
+ background-color: #181818;
+ width: 47%;
+ border: solid black;
+        }
+
+img {
+    float: left;
+    width:  285px;
+    height: 285px;
+    /*object-fit: cover;*/
+
+/******************************************/
+
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: left;
+  /*  background-color:gray*/
+  }
+/**********************************************/
+
+div.Goblin:hover{
+  background-color: Blue;
+}
+
+div.Wolf:hover{
+  background-color: red;
+}
+
+div.CherryBomb:hover{
+  background-color: turquoise;
+}
+div.FlowerBoy:hover{
+  background-color: orange;
+}
+
+div.IGOR:hover{
+  background-color: pink;
+}
+
+div.CMIYGL:hover{
+  background-color: #C7F2A4;
+}
