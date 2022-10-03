@@ -1,6 +1,6 @@
 body{
-  background-color: beige;
-  text-align: center;
+ background-color: #181818;
+ text-align: center;
 }
 
 div{
@@ -31,6 +31,10 @@ table {
 
 .left{
     float: left;
+}
+
+.font{
+  color: #E9DAC1;
 }
 
 /**********************************************/
