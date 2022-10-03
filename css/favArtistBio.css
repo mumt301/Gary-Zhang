@@ -1,14 +1,11 @@
 body{
   text-align: center;
-  background-color: blue;
+  background-color: #6F38C5;
+  font-size: 105%;
 }
 
-img{
-  /*position: relative; */
-  width: 25%;
-  float: left;
-  object-fit: contain;
-
+p{
+  text-align: left;
 }
 
 div{
@@ -19,6 +16,13 @@ div{
  border-width: thick;
         }
 
+img{
+  /*position: relative; */
+  width: 25%;
+  float: left;
+  object-fit: contain;
+
+}
 table {
     margin-left: auto;
     margin-right: auto;
@@ -36,6 +40,6 @@ table {
 /*********************************************/
 #heading{
   width:19%;
-  background-color:purple;
+  background-color:#6F38C5;
   border:unset;
 }
