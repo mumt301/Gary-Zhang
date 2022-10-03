@@ -1,0 +1,47 @@
+body{
+  background-color: beige;
+  text-align: center;
+}
+
+div{
+ padding : 1%;
+ color: white;
+ background-color: #181818;
+ width: 99%;
+ border: solid black;
+        }
+
+img {
+    float: left;
+    width:  285px;
+    height: 285px;
+    /*object-fit: cover;*/
+    }
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+
+
+/*********************************************/
+
+
+
+.left{
+    float: left;
+}
+
+/**********************************************/
+div.FlowerBoy:hover{
+  background-color: #FD841F;
+}
+
+div.IGOR:hover{
+  background-color: #FF87B2;
+}
+
+div.CMIYGL:hover{
+  background-color: #C7F2A4;
+}

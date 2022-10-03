@@ -1,0 +1,41 @@
+body{
+  text-align: center;
+  background-color: blue;
+}
+
+img{
+  /*position: relative; */
+  width: 25%;
+  float: left;
+  object-fit: contain;
+
+}
+
+div{
+ color: white;
+ width: 79%;
+ background-color: #181818;
+ border: solid black;
+ border-width: thick;
+        }
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+
+
+/*********************************************/
+
+.left{
+  float: left;
+}
+
+
+/*********************************************/
+#heading{
+  width:19%;
+  background-color:purple;
+  border:unset;
+}
