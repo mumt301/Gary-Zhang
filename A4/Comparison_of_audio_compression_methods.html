@@ -22,10 +22,10 @@
 
   let saveTable  = document.createElement('table');
 
-  let file1 =   [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-rate',
-                 'OS' : 'Original size', 'CS' : 'Compressed size', 'CR' : 'Compression ratio',
-                 'LOA': 'Link to original audio', 'LCA' : 'Link to compressed audio',
-                 'LRA': 'Link to residual audio'}];
+let file1 =   [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-rate',
+               'OS' : 'Original size', 'CS' : 'Compressed size', 'CR' : 'Compression ratio',
+               'LOA': 'Link to original audio', 'LCA' : 'Link to compressed audio',
+               'LRA': 'Link to residual audio'}];
 
   file1.push({ 'F'  : "Somebody To Love", 'CA' : "MP3", 'BR' : "96kbps",
                'OS' : "2822kb", 'CS': "808kb", 'CR': "0.29",
@@ -99,14 +99,12 @@ let file2 =   [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-ra
          tr = document.createElement('tr');
          let element = Object.keys(file1[i]);
 
-
         //create the columns (cells) of the rows
          for (j = 0; j < element.length; j++) {
            td = document.createElement('td');
            tr.appendChild(td);
            td.innerHTML = file1[i][element[j]];
          }
-         //
          table.appendChild(tr);
        }
      }
@@ -118,14 +116,12 @@ let file2 =   [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-ra
          tr = document.createElement('tr');
          let element = Object.keys(file2[i]);
 
-
         //create the columns (cells) of the rows
          for (j = 0; j < element.length; j++) {
            td = document.createElement('td');
            tr.appendChild(td);
            td.innerHTML = file2[i][element[j]];
          }
-         //
          table.appendChild(tr);
        }
      }
