@@ -8,6 +8,11 @@
 
   <body>
 
+    <script type="text/javascript">
+      console.log('Helo');
+    </script>
+
+
     Comparison of audio compression methods
     <br>
 
@@ -36,7 +41,45 @@
       </tr>
     </table>
 
+  Discography_table here
+  <div id="discography_table"></div>
+  <button id="discography_Buton" class=button onclick="discography()">Click here for JB discography</button>
+
+  <script type="text/javascript">
+  let table1 = [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-rate',
+                 'OS' : 'Original size', 'CS' : 'Compressed size', 'CR' : 'Compression ratio',
+                 'LOA' : 'Link to original audio', 'LCA' : 'Link to compressed audio',
+                 'LRA' : 'Link to residual audio'}];
+   table1.push({'F' : "Somebody To Love", 'CA' : "2", 'BR' : "3",
+                'OS' : "4", 'CS': "5", 'CR': "6",
+                'LOA': "7", 'LCA': "8", 'LRA' : "9"});
+
+  function discography() {
+     let table = document.createElement('table');  //creating table
+     table.id = "table1_table"                         //setting ID of set table as JB_table
+
+     for (i = 0; i < table1.length; i++) {
+       tr = document.createElement('tr');
+       let element = Object.keys(table1[i]);
+
+
+       for (j = 0; j < element.length; j++) {
+         td = document.createElement('td');
+         tr.appendChild(td);
+
+         td.innerHTML = table1[i][element[j]];
+       }
+
+       table.appendChild(tr);
+     }
+
+     document.getElementById("discography_table").appendChild(table);
+   }
+  </script>
 
 
   </body>
+
+
+
 </html>
