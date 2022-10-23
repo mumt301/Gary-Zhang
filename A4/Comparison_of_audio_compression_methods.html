@@ -9,11 +9,15 @@
 
   <body onload="discography()">
 
+  <h1>Comparison of compression algorithms</h1>
+  <div id="discography_table"></div>
+  <br>
 
-  <div id="discography_table">Compression method</div>
+  <button id="Button" onclick="discography()">Switch</button>
 
-
-  <button id="Button" onclick="discography()">Click here for JB discography</button>
+  <div class="bottom">
+    <td> <a href="../index.html"> <h3>Gary's page</h3> </a> </td>
+  </div>
 
   <script type="text/javascript">
 
@@ -27,23 +31,22 @@ let file1 =   [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-ra
                'LRA': 'Link to residual audio'}];
 
   file1.push({ 'F'  : "Somebody To Love", 'CA' : "MP3", 'BR' : "96kbps",
-               'OS' : "2822kb", 'CS': "808kb", 'CR': "0.29",
+               'OS' : "22300kb", 'CS': "808kb", 'CR': "0.036",
                'LOA': "Original".link("music/SomebodyToLove.wav"),
                'LCA': "Compressed".link("music/SomebodyToLove.mp3"),
                'LRA': "Residual".link("music/SomebodyToLoveResidualMp3.wav")});
   file1.push({ 'F'  : "Somebody To Love", 'CA' : "Ogg/Vorbis", 'BR' : "96kbps",
-               'OS' : "2822kb", 'CS': "722kb", 'CR': "0.26",
+               'OS' : "22300kb", 'CS': "722kb", 'CR': "0.032",
                'LOA': "Original".link("music/SomebodyToLove.wav"),
                'LCA': "Compressed".link("music/SomebodyToLove.ogg"),
                'LRA': "Residual".link("music/SomebodyToLoveResidualOgg.wav")});
   file1.push({ 'F'  : "Somebody To Love", 'CA' : "AC3", 'BR' : "96kbps",
-               'OS' : "2822kb", 'CS': "779kb", 'CR': "0.28",
+               'OS' : "22300kb", 'CS': "779kb", 'CR': "0.035",
                'LOA': "Original".link("music/SomebodyToLove.wav"),
                'LCA': "Compressed".link("music/SomebodyToLoveac3.wav"),
                'LRA': "Residual".link("music/SomebodyToLoveResidualAc3.wav")});
-
   file1.push({ 'F'  : "Somebody To Love", 'CA' : "M4A", 'BR' : "96kbps",
-               'OS' : "2822kb", 'CS': "792kb", 'CR': "0.28",
+               'OS' : "22300kb", 'CS': "792kb", 'CR': "0.036",
                'LOA': "Original".link("music/SomebodyToLove.wav"),
                'LCA': "Compressed".link("music/SomebodyToLove.m4a"),
                'LRA': "Residual".link("music/SomebodyToLoveResidualM4a.wav")});
@@ -58,25 +61,25 @@ let file2 =   [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-ra
 
 
   file2.push({ 'F'  : "Jesus", 'CA' : "MP3",  'BR' : "96kbps",
-               'OS' : "1411kb", 'CS': "747kb", 'CR': "0.53",
+               'OS' : "10700kb", 'CS': "747kb", 'CR': "0.07",
                'LOA': "Original".link("music/Jesus.wav"),
                'LCA': "Compressed".link("music/Jesus.mp3"),
                'LRA': "Residual".link("music/JesusResidualMp3.wav")});
 
   file2.push({ 'F'  : "Jesus", 'CA' : "Ogg/Vorbis", 'BR' : "96kbps",
-               'OS' : "1411kb", 'CS': "700kb", 'CR': "0.5",
+               'OS' : "10700kb", 'CS': "700kb", 'CR': "0.065",
                'LOA': "Original".link("music/Jesus.wav"),
                'LCA': "Compressed".link("music/Jesus.ogg"),
                'LRA': "Residual".link("music/JesusResidualOgg.wav")});
 
   file2.push({ 'F'  : "Jesus", 'CA' : "AC3",  'BR' : "96kbps",
-               'OS' : "1411kb", 'CS': "746kb", 'CR': "0.53",
+               'OS' : "10700kb", 'CS': "746kb", 'CR': "0.07",
                'LOA': "Original".link("music/Jesus.wav"),
                'LCA': "Compressed".link("music/Jesusac3.wav"),
                'LRA': "Residual".link("music/JesusResidualAc3.wav")});
 
   file2.push({ 'F'  : "Jesus", 'CA' : "M4A",  'BR' : "96kbps",
-               'OS' : "1411kb", 'CS': "758kb", 'CR': "0.53",
+               'OS' : "10700kb", 'CS': "758kb", 'CR': "0.07",
                'LOA': "Original".link("music/Jesus.wav"),
                'LCA': "Compressed".link("music/Jesus.m4a"),
                'LRA': "Residual".link("music/JesusResidualM4a.wav")});

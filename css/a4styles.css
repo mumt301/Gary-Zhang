@@ -1,5 +1,7 @@
 body{
-  background-color: #C8FFD4;
+  background-color: #F8FFDB;
+  text-align: center;
+
 
 }
 
@@ -11,4 +13,11 @@ table {
 
 td, th{
   border : 2px solid black;
+}
+
+.bottom{
+  position:fixed;
+  right: 0px;
+  bottom: 5px;
+  width: 10%;
 }
