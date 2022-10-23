@@ -6,22 +6,16 @@
     <link rel="stylesheet" href="../css/a4styles.css">
   </head>
 
-  <body>
+  <body onload="discography()">
 
-    <script type="text/javascript">
-      console.log('Helo');
-    </script>
+  <!--table load="discography()">
 
-
-    Comparison of audio compression methods
-    <br>
-
-
+  </table-->
 
 
   Discography_table here
-  <div id="discography_table"></div>
-  <button id="discography_Buton" class=button onclick="discography()">Click here for JB discography</button>
+  <div id="discography_table">Compression method</div>
+  <button id="Button" onclick="discography()">Click here for JB discography</button>
 
   <script type="text/javascript">
 
@@ -99,6 +93,7 @@
      }
 
      document.getElementById("discography_table").appendChild(table);
+
    }
   </script>
 
