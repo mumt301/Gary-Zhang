@@ -19,7 +19,6 @@
 
   //creating boolean to keep track of which table to display
   let heads = true;
-
   let saveTable  = document.createElement('table');
 
 let file1 =   [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-rate',
@@ -86,10 +85,10 @@ let file2 =   [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-ra
      let table = document.createElement('table');  //creating table
      //table.id = "table"                         //setting ID of set table as JB_table
 
+    console.log("Checking if saveTable.rows..length is bigger than 1. The value is " + saveTable.rows.length);
      //if the table already has values, we must remove them
-     console.log(saveTable.length);
-     while (saveTable.length > 1){
-      document.getElementById("discography_table").removeChild(saveTable);
+     if (saveTable.rows.length > 1){
+      document.getElementById("discography_table").removeChild(table);
      }
 
      if (heads){
@@ -128,6 +127,11 @@ let file2 =   [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-ra
 
      document.getElementById("discography_table").appendChild(table);
      saveTable = table;
+     console.log("WE are at the end of this, the table childNodes are  " + table.childNodes + "table");
+     console.log("Similarly, saveTable is " + saveTable.childNodes + " and its length is " + saveTable.rows.length);
+     console.log("saveTable.rows are " + saveTable.rows);
+
+
    }
   </script>
 
