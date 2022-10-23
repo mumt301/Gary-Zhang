@@ -16,43 +16,41 @@
     Comparison of audio compression methods
     <br>
 
-    <table>
-      <tr>
-        <th>Filename</th>
-        <th>Compression algorithm</th>
-        <th>Bit-rate</th>
-        <th>Orignal size</th>
-        <th>Compressed size</th>
-        <th>Compression ratio</th>
-        <th>Link to original audio</th>
-        <th>Link to compressed audio</th>
-        <th>Link to residual audio</th>
-      </tr>
-      <tr>
-        <th>Jesus</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </table>
+
+
 
   Discography_table here
   <div id="discography_table"></div>
   <button id="discography_Buton" class=button onclick="discography()">Click here for JB discography</button>
 
   <script type="text/javascript">
-  let table1 = [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-rate',
+
+  let table1 = [{'F'  : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-rate',
                  'OS' : 'Original size', 'CS' : 'Compressed size', 'CR' : 'Compression ratio',
-                 'LOA' : 'Link to original audio', 'LCA' : 'Link to compressed audio',
-                 'LRA' : 'Link to residual audio'}];
-   table1.push({'F' : "Somebody To Love", 'CA' : "2", 'BR' : "3",
-                'OS' : "4", 'CS': "5", 'CR': "6",
-                'LOA': "7", 'LCA': "8", 'LRA' : "9"});
+                 'LOA': 'Link to original audio', 'LCA' : 'Link to compressed audio',
+                 'LRA': 'Link to residual audio'}];
+
+   table1.push({'F'  : "Somebody To Love", 'CA' : "MP3", 'BR' : "96kbps",
+                'OS' : "22400kb", 'CS': "808kb", 'CR': "0.036",
+                'LOA': "Original".link("music/SomebodyToLove.wav"),
+                'LCA': "Compressed".link("music/SomebodyToLove.mp3"),
+                'LRA': "tba"});
+   table1.push({'F'  : "Somebody To Love", 'CA' : "Ogg/Vorbis", 'BR' : "64kbps",
+                'OS' : "22400kb", 'CS': "488kb", 'CR': "0.021",
+                'LOA': "Original".link("music/SomebodyToLove.wav"),
+                'LCA': "Compressed".link("music/SomebodyToLove.ogg"),
+                'LRA': "tba"});
+  table1.push({'F'  : "Somebody To Love", 'CA' : "AC3", 'BR' : "32kbps",
+               'OS' : "22400kb", 'CS': "260kb", 'CR': "0.011",
+               'LOA': "Original".link("music/SomebodyToLove.wav"),
+               'LCA': "Compressed".link("music/SomebodyToLoveac3.wav"),
+               'LRA': "tba"});
+
+  /*table1.push({'F'  : "Somebody To Love", 'CA' : "M4A", 'BR' : "129kbps",
+               'OS' : "22400kb", 'CS': "1030kb", 'CR': "0.046",
+               'LOA': "Original".link("music/SomebodyToLove.wav"),
+               'LCA': "Compressed".link("music/SomebodyToLove.m4a"),
+               'LRA': "tba"});*/
 
   function discography() {
      let table = document.createElement('table');  //creating table
