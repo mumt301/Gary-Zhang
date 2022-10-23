@@ -88,7 +88,7 @@ let file2 =   [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-ra
     console.log("Checking if saveTable.rows..length is bigger than 1. The value is " + saveTable.rows.length);
      //if the table already has values, we must remove them
      if (saveTable.rows.length > 1){
-      document.getElementById("discography_table").removeChild(table);
+      document.getElementById("discography_table").removeChild(saveTable);
      }
 
      if (heads){
@@ -126,18 +126,9 @@ let file2 =   [{'F' : 'Filename', 'CA' : 'Compression algorithm', 'BR' : 'Bit-ra
      }
 
      document.getElementById("discography_table").appendChild(table);
+     //we save a copy of the table so that we may remove it when we click the button
      saveTable = table;
-     console.log("WE are at the end of this, the table childNodes are  " + table.childNodes + "table");
-     console.log("Similarly, saveTable is " + saveTable.childNodes + " and its length is " + saveTable.rows.length);
-     console.log("saveTable.rows are " + saveTable.rows);
-
-
    }
   </script>
-
-
   </body>
-
-
-
 </html>
