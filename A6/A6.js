@@ -27,17 +27,14 @@ function getMBID(queryURL){
         //Data parsing
         let artistName = retrievedData.getElementsByTagName("artist")[0].getElementsByTagName("name")[0].innerHTML;
         let artistMBID = retrievedData.getElementsByTagName("artist")[0].id;
-
-        console.log("artistName is " + artistName);
-        console.log("artistMBID is " + artistMBID);
-
+        
         getAlbums(artistMBID);
 
         let placeholder = document.getElementById('artist_Name');
         placeholder.innerHTML = `Current artist is ${artistName}`;
 
       }
-  }
+   }
 }
 
 function getAlbums(artistMBID){
@@ -67,9 +64,8 @@ function getAlbums(artistMBID){
       }
       console.log("albums.length is " + albums.length);
       console.log("WE ARE GOING TO SHOW SORTED ALBUMS SOON")
-      sortedAlbums = albums.sort((a,b)=>new Date(a.getElementsByTagName("first-release-date")[0].innerHTML) - new Date(b.getElementsByTagName("first-release-date")[0].innerHTML));
+      sortedAlbums = albums.sort((a,b)=> new Date(a.getElementsByTagName("first-release-date")[0].innerHTML) - new Date(b.getElementsByTagName("first-release-date")[0].innerHTML));
       showTable(sortedAlbums);
-
     }
   }
 }
@@ -98,7 +94,7 @@ function showTable(sortedAlbums) {
         td2 = document.createElement('td');
         td2.innerHTML = sortedAlbums[i].getElementsByTagName('first-release-date')[0].innerHTML;
         tr.appendChild(td2);
-        
+
         table.appendChild(tr);
     }
     document.getElementById('the_result').appendChild(table);
