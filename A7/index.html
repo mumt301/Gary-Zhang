@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Theremin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <link rel="stylesheet" href="11.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap" rel="stylesheet">
+    <script src="11.js" type="text/JavaScript"></script>
+    <script src="11-auxiliary-functions.js" type="text/JavaScript"></script>
+</head>
+
+<body>
+    <h1>An online <span id="thereminLogo">Theremin</span> instrument</h1>
+    <p>The theremin is an electronic musical instrument invented by <a
+            href="https://en.wikipedia.org/wiki/Leon_Theremin">Leon Theremin</a> in 1920s.</p>
+    <p>This demo uses <a href="https://alemangui.github.io/pizzicato/">pizzicato.js</a> to implement a "virtual"
+        Theremin on your browser.
+    </p>
+    <p>The <code>pizzicato.js</code> library (and other similar ones) use the <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">Web Audio API</a> to play sounds on
+        the browser.</p>
+    <div id="thereminZone"></div>
+    <br>
+    <label>Turn on auto-tune
+      <input type="checkbox" onclick="autoTune()" id="myCheck">
+    </label>
+
+
+
+
+</body>
+
+</html>

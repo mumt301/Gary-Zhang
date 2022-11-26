@@ -1,0 +1,10 @@
+#thereminZone {
+    background: linear-gradient(90deg, rgba(184,225,230,1) 0%, rgba(0,212,255,1) 100%);
+    height: 200px;
+    width: 100%;
+    border-style: none;
+}
+
+#thereminLogo {
+    font-family: 'Holtwood One SC', serif;
+}
