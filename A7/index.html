@@ -41,8 +41,10 @@
           <td><button type="button" onclick="selectWave('sawtooth');"> Sawtooth </button></td>
         </tr>
         <tr>
-          <td> <label>Delay <input type="checkbox" onclick="myDelay()" id="myDelay"> </label> </td>
-          <td> <label>Reverb<input type="checkbox" onclick="myReverb()" id="myReverb"> </label></td>
+          <!--td> <label>Delay <input type="checkbox" onclick="myDelay()" id="myDelay"> </label> </td>
+          <td> <label>Tremolo<input type="checkbox" onclick="myTremolo()" id="myTremolo"> </label></td-->
+          <td> <input type="range" class="slider" min="1" max= "100" value="50" id="minSlider" oninput="minfreqRange()"> </td>
+          <td> <input type="range" class="slider" min="1" max= "100" value="50" id="maxSlider" oninput="maxfreqRange()"> </td>
         </tr>
       </table>
     </div>

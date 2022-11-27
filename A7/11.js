@@ -1,6 +1,25 @@
 "use strict";
 
-var delay = new Pizzicato.Effects.Delay();
+//var delay = new Pizzicato.Effects.Delay();
+//var tremolo = new Pizzicato.Effects.Tremolo();
+//var distortion = new Pizzicato.Effects.Distortion();
+
+let minFreq = 220;
+let maxFreq = 880;
+
+function minfreqRange(){
+  let slider = document.getElementById("minSlider");
+  minFreq = Math.round(slider.value * 4.4);
+  console.log("minFreq is " + minFreq);
+}
+
+function maxfreqRange(){
+  let slider = document.getElementById("maxSlider");
+  maxFreq = Math.round((slider.value * 4.4) + 660);
+    console.log("maxFreq is " + maxFreq);
+}
+
+
 
 let autotune = false;
 
@@ -9,7 +28,9 @@ let sound1 = false;
 let sound2 = false;
 let selectedSound = Object.create(null);
 
-let delayOn = false;
+//let delayOn = false;
+//let tremoloOn = false;
+//let distortionOn = false;
 
 
 // Turn theremin on
@@ -23,11 +44,12 @@ function thereminControl(e, oscillator, theremin) {
     let y = e.offsetY;
   //  console.log(x, y);
 
-    let minFrequency = 220.0;
-    let maxFrequency = 880.0;
-    let freqRange = maxFrequency - minFrequency;
-    let thereminFreq = minFrequency + (x / theremin.clientWidth) * freqRange;
-    let thereminVolume = 1.0 - (y / theremin.clientHeight);
+  //  let minFrequency = 220.0;
+//    let maxFrequency = 880.0;
+//    let freqRange = maxFrequency - minFrequency ;
+    let freqRange = maxFreq - minFreq;
+    let thereminFreq = minFreq + (x / theremin.clientWidth) * freqRange;
+    let thereminVolume = (1.0 - (y / theremin.clientHeight))/4;
 
     let placeholder1 = document.getElementById("frequency");
     let placeholder2 = document.getElementById("note");
@@ -68,7 +90,7 @@ function thereminOff(oscillator) {
 }
 
 function run() {
-
+    /*
     if (delayOn == true){
       console.log("adding delay")
       selectedSound.addEffect(delay);
@@ -79,6 +101,29 @@ function run() {
       selectedSound.removeEffect(delay);
     }
 
+    if (tremoloOn == true){
+      console.log("adding tremolo")
+      selectedSound.addEffect(tremolo);
+    }
+
+    else if (tremoloOn == false){
+      console.log("removing tremolo");
+      selectedSound.removeEffect(tremolo);
+    }
+
+    if (distortionOn == true){
+      console.log("adding distortion")
+      selectedSound.addEffect(distortion);
+    }
+
+    else if (distortionOn == false){
+      console.log("removing distortion");
+      selectedSound.removeEffect(distortion);
+    }
+    */
+
+
+
     let oscillator = selectedSound;
     console.log("oscillator is  " + oscillator);
     // Get the theremin div from the html
@@ -87,12 +132,12 @@ function run() {
     // Theremin plays when the mouse enters the theremin div
     theremin.addEventListener("mouseenter", function () {
 
+        //unhinged way of turning off sound when selecting a second waveform
         if (sound1 && sound2){
           console.log("sound1 and sound2");
           thereminOff(oscillator);
           oscillator = null;
-          sound2 = false;
-          return;
+          sound2 = false;       //do i even need this?
         }
 
         else{
@@ -102,21 +147,28 @@ function run() {
 
     // Theremin is controlled while the mouse is inside the theremin div
     theremin.addEventListener("mousemove", function (e) {
-        thereminControl(e, oscillator, theremin);
+
+      //unhinged way of turning off sound when selecting a second waveform
+      if (sound1 && sound2){
+        console.log("sound1 and sound2");
+        thereminOff(oscillator);
+        oscillator = null;
+        sound2 = false;
+      }
+
+      else{
+          thereminControl(e, oscillator, theremin);
+      }
     });
 
     // Theremin stops when the mouse leaves the theremin div
     theremin.addEventListener("mouseleave", function () {
+      if (sound1 && sound2){
+        oscillator = null;
+        sound2 = false;
+      }
         thereminOff(oscillator);
     });
-
-    //if there already exists a sound, then we turn this one off.
-//    if (exist == false){
-//      console.log("exist is false")
-//      theremin.addEventListener("mouseenter", function () {
-//          thereminOff(oscillator);
-//      });
-
 }
 
 function autoTune(){
@@ -133,8 +185,6 @@ function autoTune(){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
 function selectWave(wave){
   let sound = new Pizzicato.Sound({
       source: 'wave',
@@ -143,11 +193,9 @@ function selectWave(wave){
           frequency: 220
       }
   });
-
   if (sound1 == false){
     sound1 = true;
   }
-
   else{
     sound2 = true;
   }
@@ -157,6 +205,24 @@ function selectWave(wave){
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//THE EFFECTS ADDED TOGETHER REALLY HURTS MY EARS WHY???
+
+/*
 function myDelay(){
   var checkBox = document.getElementById("myDelay");
   if (checkBox.checked == true){
@@ -167,8 +233,45 @@ function myDelay(){
     console.log("delayOn is false");
     delayOn = false;
   }
-//  run();
+
+  if (sound1 == true){
+    sound2 = true;
+  }
+
+  run();
 }
 
+function myTremolo(){
+  var checkBox = document.getElementById("myTremolo");
+  if (checkBox.checked == true){
+    console.log("tremoloOn is true");
+    tremoloOn = true;
+  }
+  else{
+    console.log("tremoloOn is false");
+    tremoloOn = false;
+  }
+  if (sound1 == true){
+    sound2 = true;
+  }
+  run();
+}
+
+function myDistortion(){
+  var checkBox = document.getElementById("myDistortion");
+  if (checkBox.checked == true){
+    console.log("distortionOn is true");
+    distortionOn = true;
+  }
+  else{
+    console.log("distortionOn is false");
+    distortionOn = false;
+  }
+  if (sound1 == true){
+    sound2 = true;
+  }
+  run();
+}
+*/
 
 //window.onload = run();
