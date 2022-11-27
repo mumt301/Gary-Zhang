@@ -1,9 +1,16 @@
 "use strict";
 
+var delay = new Pizzicato.Effects.Delay();
+
 let autotune = false;
-let exist = false;
-let delay = false;
-let selectedSound = null;
+
+//sound1 and sound2 are used to turn off sounds when we select a new waveform
+let sound1 = false;
+let sound2 = false;
+let selectedSound = Object.create(null);
+
+let delayOn = false;
+
 
 // Turn theremin on
 function thereminOn(oscillator) {
@@ -62,24 +69,35 @@ function thereminOff(oscillator) {
 
 function run() {
 
-    if (delay == true){
+    if (delayOn == true){
       console.log("adding delay")
       selectedSound.addEffect(delay);
     }
 
-    else if (delay == false){
+    else if (delayOn == false){
+      console.log("removing delay");
       selectedSound.removeEffect(delay);
     }
 
     let oscillator = selectedSound;
-
     console.log("oscillator is  " + oscillator);
     // Get the theremin div from the html
     const theremin = document.getElementById("thereminZone");
 
     // Theremin plays when the mouse enters the theremin div
     theremin.addEventListener("mouseenter", function () {
-        thereminOn(oscillator);
+
+        if (sound1 && sound2){
+          console.log("sound1 and sound2");
+          thereminOff(oscillator);
+          oscillator = null;
+          sound2 = false;
+          return;
+        }
+
+        else{
+          thereminOn(oscillator);
+        }
     });
 
     // Theremin is controlled while the mouse is inside the theremin div
@@ -91,6 +109,14 @@ function run() {
     theremin.addEventListener("mouseleave", function () {
         thereminOff(oscillator);
     });
+
+    //if there already exists a sound, then we turn this one off.
+//    if (exist == false){
+//      console.log("exist is false")
+//      theremin.addEventListener("mouseenter", function () {
+//          thereminOff(oscillator);
+//      });
+
 }
 
 function autoTune(){
@@ -118,6 +144,13 @@ function selectWave(wave){
       }
   });
 
+  if (sound1 == false){
+    sound1 = true;
+  }
+
+  else{
+    sound2 = true;
+  }
   selectedSound = sound;
   run();
 }
@@ -126,18 +159,16 @@ function selectWave(wave){
 
 function myDelay(){
   var checkBox = document.getElementById("myDelay");
-  var delay = new Pizzicato.Effects.Delay();
   if (checkBox.checked == true){
-    delay = true;
+    console.log("delayOn is true");
+    delayOn = true;
   }
   else{
-    delay = false;
+    console.log("delayOn is false");
+    delayOn = false;
   }
-  run();
+//  run();
 }
 
 
-
-
-
-//window.onload = runAfterLoadingPage;
+//window.onload = run();
