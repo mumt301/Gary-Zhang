@@ -1,6 +1,9 @@
 "use strict";
 
 let autotune = false;
+let exist = false;
+let delay = false;
+let selectedSound = null;
 
 // Turn theremin on
 function thereminOn(oscillator) {
@@ -11,7 +14,7 @@ function thereminOn(oscillator) {
 function thereminControl(e, oscillator, theremin) {
     let x = e.offsetX;
     let y = e.offsetY;
-    console.log(x, y);
+  //  console.log(x, y);
 
     let minFrequency = 220.0;
     let maxFrequency = 880.0;
@@ -19,21 +22,36 @@ function thereminControl(e, oscillator, theremin) {
     let thereminFreq = minFrequency + (x / theremin.clientWidth) * freqRange;
     let thereminVolume = 1.0 - (y / theremin.clientHeight);
 
+    let placeholder1 = document.getElementById("frequency");
+    let placeholder2 = document.getElementById("note");
+
     if (autotune == false){
       console.log("Frequency: ", thereminFreq);
       oscillator.frequency = thereminFreq;
       console.log("Volume: ", thereminVolume);
       oscillator.volume = thereminVolume;
+
+      let noteName = noteFromFrequency(thereminFreq);
+      let midiNumber = frequencyToMidi(thereminFreq);
+
+      placeholder1.innerHTML = `Frequency: ${thereminFreq.toFixed(2)}`;
+      placeholder2.innerHTML = `Note: ${noteName}`;
     }
 
+    //if auto-tune is true, then we round midiNumber to the nearest integer
     else{
       let midiNumber = frequencyToMidi(thereminFreq);
       midiNumber = Math.round(midiNumber);
       thereminFreq = midiToFrequency(midiNumber);
-      console.log("Frequency: ", thereminFreq)
+      console.log("Frequency: ", thereminFreq);
       oscillator.frequency = thereminFreq;
       console.log("Volume: ", thereminVolume);
       oscillator.volume = thereminVolume;
+
+      let noteName = noteFromFrequency(thereminFreq);
+
+      placeholder1.innerHTML = `Frequency: ${thereminFreq.toFixed(2)}`;
+      placeholder2.innerHTML = `Note: ${noteName}`;
     }
 }
 
@@ -42,16 +60,20 @@ function thereminOff(oscillator) {
     oscillator.stop();
 }
 
-function runAfterLoadingPage() {
-    // Instantiate a sine wave with pizzicato.js
-    const oscillator = new Pizzicato.Sound({
-        source: 'wave',
-        options: {
-            type: "sine",
-            frequency: 220
-        }
-    });
+function run() {
 
+    if (delay == true){
+      console.log("adding delay")
+      selectedSound.addEffect(delay);
+    }
+
+    else if (delay == false){
+      selectedSound.removeEffect(delay);
+    }
+
+    let oscillator = selectedSound;
+
+    console.log("oscillator is  " + oscillator);
     // Get the theremin div from the html
     const theremin = document.getElementById("thereminZone");
 
@@ -69,8 +91,6 @@ function runAfterLoadingPage() {
     theremin.addEventListener("mouseleave", function () {
         thereminOff(oscillator);
     });
-
-
 }
 
 function autoTune(){
@@ -78,16 +98,46 @@ function autoTune(){
   if (checkBox.checked == true){
     autotune = true;
     console.log("autotune is on" + autotune);
-  //  runAfterLoadingPage()
-
-  //  let midiNumber = frequencyToMidi(oscillator.frequency);
-  //  console.log("midiNumber is " + midiNumber);
   }
   else{
     autotune = false;
     console.log("autotune is off" + autotune);
-  //  runAfterLoadingPage();
   }
 }
 
-window.onload = runAfterLoadingPage;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+function selectWave(wave){
+  let sound = new Pizzicato.Sound({
+      source: 'wave',
+      options: {
+          type: wave,
+          frequency: 220
+      }
+  });
+
+  selectedSound = sound;
+  run();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function myDelay(){
+  var checkBox = document.getElementById("myDelay");
+  var delay = new Pizzicato.Effects.Delay();
+  if (checkBox.checked == true){
+    delay = true;
+  }
+  else{
+    delay = false;
+  }
+  run();
+}
+
+
+
+
+
+//window.onload = runAfterLoadingPage;

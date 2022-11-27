@@ -25,9 +25,28 @@
         the browser.</p>
     <div id="thereminZone"></div>
     <br>
-    <label>Turn on auto-tune
-      <input type="checkbox" onclick="autoTune()" id="myCheck">
-    </label>
+    <div>
+      <label>Turn on auto-tune
+        <input type="checkbox" onclick="autoTune()" id="myCheck">
+      </label>
+      <table>
+        <tr>
+          <td id = "frequency"></td>
+          <td id = "note"></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="selectWave('sine');"> Sine </button></td>
+          <td><button type="button" onclick="selectWave('square');"> Square </button></td>
+          <td><button type="button" onclick="selectWave('triangle');"> Triangle </button></td>
+          <td><button type="button" onclick="selectWave('sawtooth');"> Sawtooth </button></td>
+        </tr>
+        <tr>
+          <td> <label>Delay <input type="checkbox" onclick="myDelay()" id="myDelay"> </label> </td>
+          <td> <label>Reverb<input type="checkbox" onclick="myReverb()" id="myReverb"> </label></td>
+        </tr>
+      </table>
+    </div>
+
 
 
 
