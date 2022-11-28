@@ -1,5 +1,7 @@
+
+
 #thereminZone {
-    background: linear-gradient(90deg, rgba(184,225,230,1) 0%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(90deg, #FEFCF3 0%, #21E1E1 100%);
     height: 200px;
     width: 100%;
     border-style: none;
@@ -11,4 +13,11 @@
 
 .slider{
   width: 140%
+}
+
+.bottom{
+  position:fixed;
+  right: 0px;
+  bottom: 5px;
+  width: 10%;
 }
