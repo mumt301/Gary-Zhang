@@ -1,29 +1,10 @@
 "use strict";
 
-let notes = [{'C' : "sounds/xylo_c.wav"}]
-
 function play1(){
-
-    //create a synth and connect it to the main output (your speakers)
-    const synth = new Tone.Synth().toDestination();
-
-    let notes = ["G4", "E4", "G4", "E4", "G4", "E4","G4", "E4", "G4", "E4", "G4", "E4", "G4", "E4","G4", "E4",
-                 "A4", "F4", "A4", "F4", "A4", "F4","A4", "F4", "A4", "F4", "A4", "F4", "A4", "F4","A4", "F4"];
-    Tone.Transport.bpm.value = 120;
-
-    // define a list of notes
-  //  let notes = ["C4", "D4", "D#4", "F4", "G4", "Bb4", "C5", "D5", "Ab4", "Ab3"];
-
-    let i = 0;
-    const loop = new Tone.Loop(function (time) {
-        // every single loop iteration, pick a new pitch from the list and play it
-        synth.triggerAttackRelease(notes[i % notes.length], '32n', time);
-        i++;
-        console.log("i is " + i);
-    }, "16n").start(0);
-
-    Tone.Transport.start('+0.1');
-    return loop;
+  const player = new Tone.Player("https://tonejs.github.io/audio/berklee/hand_drum_.mp3").toDestination();
+  Tone.loaded().then(() => {
+  	player.start();
+  });
 }
 
 
@@ -86,38 +67,53 @@ function play2() {
 
 
 function play3(){
-  const synth = new Tone.Synth().toDestination();
-/*  let notes =  ["A4", "A4", "A4", "G4", "F4",
-                "F4", "F4", "F4", "A4", "G4",
-                "C5", "C5", "C5", "A#4", "A4",
-                "A4", "A4", "A4", "G4", "F4"];*/
+  const melody = new Tone.Synth().toDestination();
+  const bass = new Tone.AMSynth().toDestination();
+  const drum = new Tone.Player("https://tonejs.github.io/audio/berklee/hand_drum_.mp3").toDestination();
 
-  let notes =  [["A4", "A4", "A4", "G4", "F4"],
+  let notes1 =  [["A4", "A4", "A4", "G4", "F4"],
                 ["F4", "F4", "F4", "A4", "G4"],
                 ["C5", "C5", "C5", "A#4", "A4"],
                 ["A4", "A4", "A4", "G4", "F4"]];
 
+  let notes2 = [["F2"],
+                ["D2"],
+                ["G2"],
+                ["C2"]];
+
   let pattern = 0;
 
-  Tone.Transport.bpm.value = 120;
+  Tone.Transport.bpm.value = 170;
   var seq = new Tone.Sequence(function(time, index){
 
-    //if we are at the correct position on the score
+    //if we are at the correct position on the melody score
     if ([2,3,5,6,8].indexOf(index) >=0){
       //get the current note index, which goes from 0 to 4
       var getNote = ([2,3,5,6,8].indexOf(index));
 
-      console.log("getNote is index is " + getNote + " pattern is " + (pattern % 4) + " and its note is " + notes[pattern % 4][getNote]);
-      synth.triggerAttackRelease(notes[pattern % 4][getNote], "16n", time);
+      console.log("getNote is index is " + getNote + " pattern is " + (pattern % 4) + " and its note is " + notes1[pattern % 4][getNote]);
+      melody.triggerAttackRelease(notes1[pattern % 4][getNote], "16n", time);
+    }
+
+    //bass pattern
+    if ([0].indexOf(index) >=0){
+      var getNote = ([0].indexOf(index));
+      bass.triggerAttackRelease(notes2[pattern % 4][getNote]);
+    }
+
+    if ([0,4,8,12].indexOf(index) >=0){
+      drum.start();
     }
 
     //update which pattern to use
     if ([15].indexOf(index)>=0){
       pattern++;
     }
-
   }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
 
-  Tone.Transport.start();
+
+
+
+  Tone.Transport.start('+0.5');
   seq.start();
 }
