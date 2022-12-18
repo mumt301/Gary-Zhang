@@ -87,27 +87,35 @@ function play2() {
 
 function play3(){
   const synth = new Tone.Synth().toDestination();
-  let notes =  ["A4", "A4", "A4", "G4", "F4",
+/*  let notes =  ["A4", "A4", "A4", "G4", "F4",
                 "F4", "F4", "F4", "A4", "G4",
-,               "C5", "C5", "C5", "A#4", "A4",
-                "A4", "A4", "A4", "G4", "F4"];
+                "C5", "C5", "C5", "A#4", "A4",
+                "A4", "A4", "A4", "G4", "F4"];*/
 
-  /*let notes =  [["A4", "A4", "A4", "G4", "F4"],
+  let notes =  [["A4", "A4", "A4", "G4", "F4"],
                 ["F4", "F4", "F4", "A4", "G4"],
                 ["C5", "C5", "C5", "A#4", "A4"],
-                ["A4", "A4", "A4", "G4", "F4"]];      */
+                ["A4", "A4", "A4", "G4", "F4"]];
 
+  let pattern = 0;
 
   Tone.Transport.bpm.value = 120;
   var seq = new Tone.Sequence(function(time, index){
 
     //if we are at the correct position on the score
     if ([2,3,5,6,8].indexOf(index) >=0){
-      //get the current note
+      //get the current note index, which goes from 0 to 4
       var getNote = ([2,3,5,6,8].indexOf(index));
-      console.log("getNote is index is " + getNote + " and its note is " + notes[getNote]);
-      synth.triggerAttackRelease(notes[getNote], "16n", time);
+
+      console.log("getNote is index is " + getNote + " pattern is " + (pattern % 4) + " and its note is " + notes[pattern % 4][getNote]);
+      synth.triggerAttackRelease(notes[pattern % 4][getNote], "16n", time);
     }
+
+    //update which pattern to use
+    if ([15].indexOf(index)>=0){
+      pattern++;
+    }
+
   }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
 
   Tone.Transport.start();
