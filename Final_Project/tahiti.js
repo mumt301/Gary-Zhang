@@ -66,6 +66,7 @@ function play2() {
 }*/
 
 
+
 function play3(){
   const melody = new Tone.Synth().toDestination();
   const bass = new Tone.AMSynth().toDestination();
@@ -93,15 +94,17 @@ function play3(){
 
       console.log("getNote is index is " + getNote + " pattern is " + (pattern % 4) + " and its note is " + notes1[pattern % 4][getNote]);
       melody.triggerAttackRelease(notes1[pattern % 4][getNote], "16n", time);
+      melody.volume.value = -5;
     }
 
     //bass pattern
     if ([0].indexOf(index) >=0){
       var getNote = ([0].indexOf(index));
       bass.triggerAttackRelease(notes2[pattern % 4][getNote]);
+      bass.volume.value = -8;
     }
 
-    if ([0,4,8,12].indexOf(index) >=0){
+    if ([0,1,4,8,9,12].indexOf(index) >=0){
       drum.start();
     }
 
@@ -111,9 +114,30 @@ function play3(){
     }
   }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
 
-
-
-
   Tone.Transport.start('+0.5');
   seq.start();
+  return seq;
 }
+
+function runAfterLoadingPage(){
+
+  //get all relevant divs from the html
+  const music2 = document.getElementById("pattern2");
+  const sequence = document.getElementById("sequence");
+  let loop = null;
+
+  music2.addEventListener("click", async() => {
+    await Tone.start();
+    loop = play2();
+    console.log("hello");
+  });
+
+  sequence.addEventListener('click', async () => {
+        loop.stop();
+        console.log("we stopped, loop is now " + loop);
+  });
+
+
+}
+
+window.onload = runAfterLoadingPage;
