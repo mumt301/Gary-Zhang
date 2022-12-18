@@ -29,7 +29,7 @@ function play1(){
 }
 
 function play2(){
-  var acousticGuitar = new Pizzicato.Sound('./audio/acoustic.wav', function() {
+  var acousticGuitar = new Pizzicato.Sound('./sounds/xylo_c.wav', function() {
     // Sound loaded!
     acousticGuitar.play();
 });
