@@ -7,7 +7,7 @@ div{
  padding : 1%;
  color: white;
  background-color: #E5BA73;
- width: 30%;
+ width: 30.9%;
  border: solid black;
         }
 
@@ -25,9 +25,6 @@ table {
 
 /******************************************/
 
-.welcome{
-
-}
 
 .left{
     float: left;
@@ -46,6 +43,7 @@ table {
 }
 
 .bottom{
+  background-color: #F1F6F5;
   position:fixed;
   right: 0px;
   bottom: 5px;
@@ -54,14 +52,21 @@ table {
 
 /**********************************************/
 
+div.welcome{
+  background-color: #C7F2A4;
+  color: #DBA39A;
+  width: 97.45%;
+  border: solid black;
+}
+
 div.Melody:hover{
-  background-color: #8BBCCC;
+  background-color: #82C3EC;
 }
 
 div.Bass:hover{
-  background-color: #E9DAC1;
+  background-color: #82C3EC;
 }
 
 div.Drum:hover{
-  background-color: #C7F2A4;
+  background-color: #82C3EC;
 }
