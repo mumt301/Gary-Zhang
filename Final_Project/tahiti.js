@@ -10,9 +10,9 @@ function play1(){
 function m1(){
   const melody = new Tone.Synth().toDestination();
   let notes1 =  [["A4", "A4", "A4", "G4", "F4"],
-                ["F4", "F4", "F4", "A4", "G4"],
-                ["C5", "C5", "C5", "A#4", "A4"],
-                ["A4", "A4", "A4", "G4", "F4"]];
+                ["F4", "F4", "F4", "E4", "D4"],
+                ["A#4", "A#4", "A#4", "A4","G4"],
+                ["G4", "G4", "G4", "F4", "E4"]];
   let pattern = 0;
   Tone.Transport.bpm.value = 170;
   var seq = new Tone.Sequence(function(time, index){
@@ -23,7 +23,7 @@ function m1(){
       var getNote = ([2,3,5,6,8].indexOf(index));
       melody.triggerAttackRelease(notes1[pattern % 4][getNote], "16n", time);
 
-      melody.volume.value = -5;
+      melody.volume.value = -7;
 
     }
     //update which pattern to use
@@ -34,10 +34,123 @@ function m1(){
 
   Tone.Transport.start('+0.2');
   seq.start();
-  return seq;
 }
 
+function m2(){
+  const melody = new Tone.Synth().toDestination();
+  let notes1 =  [["A5", "A5", "A5", "G5","F5"],
+                ["F5", "F5", "F5", "E5","D5"],
+                ["A#5", "A#5", "A#5","A5","G5"],
+                ["G5", "G5", "G5", "F5","E5"]];
+  let pattern = 0;
+  Tone.Transport.bpm.value = 170;
+  var seq = new Tone.Sequence(function(time, index){
+
+    //if we are at the correct position on the melody score
+    if ([8,9,11,12,14].indexOf(index) >=0){
+      //get the current note index, which goes from 0 to 4
+      var getNote = ([8,9,11,12,14].indexOf(index));
+      melody.triggerAttackRelease(notes1[pattern % 4][getNote], "16n", time);
+
+      melody.volume.value = -10;
+
+    }
+    //update which pattern to use
+    if ([15].indexOf(index)>=0){
+      pattern++;
+    }
+  }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
+
+  Tone.Transport.start('+0.2');
+  seq.start();
+}
+
+function m3(){
+  const melody = new Tone.Synth().toDestination();
+  let notes1 =  [["F4","A5","G5","F5","A4","F4","A5","G5","F5","A4"],
+                ["D4", "F5", "E5", "D5","A4","D4", "F5", "E5","D5","D4"],
+                ["G4", "A#5", "A5", "G5","A#4","G4","A#5","A5","G5","G4"],
+                ["C4","G5","F5","E5","G4","C4","G5","F5","E5","C4"]];
+  let pattern = 0;
+  Tone.Transport.bpm.value = 170;
+  var seq = new Tone.Sequence(function(time, index){
+
+    //if we are at the correct position on the melody score
+    if ([0,2,3,4,6,8,10,11,12,14].indexOf(index) >=0){
+      //get the current note index, which goes from 0 to 4
+      var getNote = ([0,2,3,4,6,8,10,11,12,14].indexOf(index));
+      melody.triggerAttackRelease(notes1[pattern % 4][getNote], "16n", time);
+
+      melody.volume.value = -10;
+
+    }
+    //update which pattern to use
+    if ([15].indexOf(index)>=0){
+      pattern++;
+    }
+  }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
+
+  Tone.Transport.start('+0.2');
+  seq.start();
+}
+
+
+
+
+
 function b1(){
+    const bass = new Tone.FMSynth().toDestination();
+    let notes2 = [["F3","F3","F3","F3","A3"],
+                  ["D3","D3","D3","D3"],
+                  ["G3","G3","G3","G3","A#3"],
+                  ["C3","C3","C3","C3"]];
+    let pattern = 0;
+
+    Tone.Transport.bpm.value = 170;
+    var seq = new Tone.Sequence(function(time, index){
+      //bass pattern
+      if ([0,2,8,10,12].indexOf(index) >=0){
+        var getNote = ([0,2,8,10,12].indexOf(index));
+        bass.triggerAttackRelease(notes2[pattern % 4][getNote], "8n", time);
+        bass.volume.value = -12;
+      }
+      //update which pattern to use
+      if ([15].indexOf(index)>=0){
+        pattern++;
+      }
+    }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
+
+    Tone.Transport.start('+0.2');
+    seq.start();
+}
+
+function b2(){
+    const bass = new Tone.FMSynth().toDestination();
+    let notes2 = [["A3","A3","A3","A3"],
+                  ["A3","A3","A3","A3"],
+                  ["A#3","A#3","A#3","A#3"],
+                  ["E3","E3","E3","E3"]];
+    let pattern = 0;
+
+    Tone.Transport.bpm.value = 170;
+    var seq = new Tone.Sequence(function(time, index){
+      //bass pattern
+      if ([2,6,10,14].indexOf(index) >=0){
+        var getNote = ([2,6,10,14].indexOf(index));
+        bass.triggerAttackRelease(notes2[pattern % 4][getNote], "8n", time);
+        bass.volume.value = -12;
+      }
+      //update which pattern to use
+      if ([15].indexOf(index)>=0){
+        pattern++;
+      }
+    }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
+
+    Tone.Transport.start('+0.2');
+    seq.start();
+}
+
+function b3(){
 
     const filter = new Tone.Filter(100, 'lowpass').toDestination();
     const bass = new Tone.FMSynth().toDestination().connect(filter);
@@ -65,63 +178,7 @@ function b1(){
 
     Tone.Transport.start('+0.2');
     seq.start();
-    return seq;
 }
-
-function b2(){
-    const bass = new Tone.FMSynth().toDestination();
-    let notes2 = [["F3","F3","F3","F3","A3"],
-                  ["D3","D3","D3","D3"],
-                  ["G3","G3","G3","G3","A#3"],
-                  ["C3","C3","C3","C3"]];
-    let pattern = 0;
-
-    Tone.Transport.bpm.value = 170;
-    var seq = new Tone.Sequence(function(time, index){
-      //bass pattern
-      if ([0,2,8,10,12].indexOf(index) >=0){
-        var getNote = ([0,2,8,10,12].indexOf(index));
-        bass.triggerAttackRelease(notes2[pattern % 4][getNote], "8n", time);
-        bass.volume.value = -12;
-      }
-      //update which pattern to use
-      if ([15].indexOf(index)>=0){
-        pattern++;
-      }
-    }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
-
-    Tone.Transport.start('+0.2');
-    seq.start();
-    return seq;
-}
-
-function b3(){
-    const bass = new Tone.FMSynth().toDestination();
-    let notes2 = [["A3","A3","A3","A3"],
-                  ["A3","A3","A3","A3"],
-                  ["A#3","A#3","A#3","A#3"],
-                  ["E3","E3","E3","E3"]];
-    let pattern = 0;
-
-    Tone.Transport.bpm.value = 170;
-    var seq = new Tone.Sequence(function(time, index){
-      //bass pattern
-      if ([2,6,10,14].indexOf(index) >=0){
-        var getNote = ([2,6,10,14].indexOf(index));
-        bass.triggerAttackRelease(notes2[pattern % 4][getNote], "8n", time);
-        bass.volume.value = -12;
-      }
-      //update which pattern to use
-      if ([15].indexOf(index)>=0){
-        pattern++;
-      }
-    }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
-
-    Tone.Transport.start('+0.2');
-    seq.start();
-    return seq;
-}
-
 
 function d1(){
 
@@ -142,7 +199,6 @@ function d1(){
 
   Tone.Transport.start('+0.2');
   seq.start();
-  return seq;
 }
 
 function runAfterLoadingPage(){
@@ -172,9 +228,6 @@ function runAfterLoadingPage(){
   const drum1 = document.getElementById("drum1");
   const drum2 = document.getElementById("drum2");
   const drum3 = document.getElementById("drum3");
-
-  const sequence = document.getElementById("sequence");
-  let loop = null;
 
   toggle.addEventListener("click", function(){
     console.log("WE ARE TOGGLING");
