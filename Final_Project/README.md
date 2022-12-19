@@ -9,7 +9,7 @@ Simply click on which patterns that you wish to mix and match, then press on the
 To stop the patterns and reset the patterns, click on the button again.
 
 Dependencies:
-None.
+Tone.js
 
 Supported browsers:
 Chrome
