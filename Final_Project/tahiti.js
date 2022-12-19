@@ -12,52 +12,35 @@ function play1(){
 }
 
 
-/*function play2() {
-
-    const synth = new Tone.Synth().toDestination();
-
-    var freeverb = new Tone.Freeverb(0.4).toDestination();
-  //  freeverb.dampening.value = 0;
-    synth.connect(freeverb);
-
-    // this time also define a list of durations
-    let notes = ["C4", "D4", "D#4", "F4", "G4", "Bb4", "C5", "D5", "Ab4", "Ab3"];
-    let durations = ["8n", "8n", "8n", "16n", "16n"];
-
-    //
-    let i = 0;
-    const loop = new Tone.Loop(function (time) {
-        // every single loop iteration, pick a new duration from the list and set the loop's timer to it
-        this.interval = durations[i % durations.length];
-        synth.triggerAttackRelease(notes[i % notes.length], '8n', time);
-        i++;
-        console.log("i is " + i);
-    }, "8n").start(0);
-
-    Tone.Transport.start();
-    return loop;
-
-}*/
-
 function play2(){
   const player = new Tone.Player({
 	url: "https://tonejs.github.io/audio/drum-samples/loops/ominous.mp3",
 	autostart: true,
 });
-const filter = new Tone.Filter(0, 'highpass').toDestination();
-//const feedbackDelay = new Tone.FeedbackDelay(0.125, 0.5).toDestination();
+const filter = new Tone.Filter(400, 'lowpass').toDestination();
+const feedbackDelay = new Tone.FeedbackDelay(0.125, 0.5).toDestination();
 
 // connect the player to the feedback delay and filter in parallel
 player.connect(filter);
-//player.connect(feedbackDelay);
+player.connect(feedbackDelay);
 }
 
 
 
 function play3(){
+  const filter = new Tone.Filter(200, 'lowpass').toDestination();
+  const feedbackDelay = new Tone.FeedbackDelay(0.5, 0.7).toDestination();
+
   const melody = new Tone.Synth().toDestination();
   const bass = new Tone.AMSynth().toDestination();
   const drum = new Tone.Player("https://tonejs.github.io/audio/berklee/hand_drum_.mp3").toDestination();
+
+
+  bass.connect(filter);
+  bass.connect(feedbackDelay);
+
+  drum.connect(feedbackDelay);
+  drum.connect(filter);
 
   let notes1 =  [["A4", "A4", "A4", "G4", "F4"],
                 ["F4", "F4", "F4", "A4", "G4"],
@@ -79,19 +62,26 @@ function play3(){
       //get the current note index, which goes from 0 to 4
       var getNote = ([2,3,5,6,8].indexOf(index));
 
-      console.log("getNote is index is " + getNote + " pattern is " + (pattern % 4) + " and its note is " + notes1[pattern % 4][getNote]);
+      melody.connect(filter);
+      melody.connect(feedbackDelay);
       melody.triggerAttackRelease(notes1[pattern % 4][getNote], "16n", time);
+
       melody.volume.value = -5;
+
     }
 
     //bass pattern
     if ([0].indexOf(index) >=0){
       var getNote = ([0].indexOf(index));
+      bass.connect(filter);
+      bass.connect(feedbackDelay);
       bass.triggerAttackRelease(notes2[pattern % 4][getNote]);
       bass.volume.value = -8;
     }
 
     if ([0,1,4,8,9,12].indexOf(index) >=0){
+      drum.connect(feedbackDelay);
+      drum.connect(filter);
       drum.start();
       drum.volume.value = -7;
     }
