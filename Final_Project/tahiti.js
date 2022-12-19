@@ -1,12 +1,5 @@
 "use strict";
 
-function play1(){
-  const player = new Tone.Player("https://tonejs.github.io/audio/berklee/hand_drum_.mp3").toDestination();
-  Tone.loaded().then(() => {
-  	player.start();
-  });
-}
-
 function m1(){
   const melody = new Tone.Synth().toDestination();
   let notes1 =  [["A4", "A4", "A4", "G4", "F4"],
@@ -182,12 +175,54 @@ function b3(){
 
 function d1(){
 
-  const drum = new Tone.Player("https://tonejs.github.io/audio/berklee/hand_drum_.mp3").toDestination();
+  const drum = new Tone.Player("https://tonejs.github.io/audio/berklee/goat_hoof_2.mp3").toDestination();
   let pattern = 0;
 
   Tone.Transport.bpm.value = 170;
   var seq = new Tone.Sequence(function(time, index){
-    if ([0,1,4,8,9,12].indexOf(index) >=0){
+    if ([0,8].indexOf(index) >=0){
+      drum.start();
+      drum.volume.value = -7;
+    }
+    //update which pattern to use
+    if ([15].indexOf(index)>=0){
+      pattern++;
+    }
+  }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
+
+  Tone.Transport.start('+0.2');
+  seq.start();
+}
+
+function d2(){
+
+  const drum = new Tone.Player("https://tonejs.github.io/audio/berklee/coocoo_flute1.mp3").toDestination();
+  let pattern = 0;
+
+  Tone.Transport.bpm.value = 170;
+  var seq = new Tone.Sequence(function(time, index){
+    if ([0].indexOf(index) >=0 && pattern%4 == 2){
+      drum.start();
+      drum.volume.value = -7;
+    }
+    //update which pattern to use
+    if ([15].indexOf(index)>=0){
+      pattern++;
+    }
+  }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
+
+  Tone.Transport.start('+0.2');
+  seq.start();
+}
+
+function d3(){
+
+  const drum = new Tone.Player("https://tonejs.github.io/audio/berklee/anklung_scale_1.mp3").toDestination();
+  let pattern = 0;
+
+  Tone.Transport.bpm.value = 170;
+  var seq = new Tone.Sequence(function(time, index){
+    if ([0].indexOf(index) >=0 && (pattern%4 == 1 || pattern%4 == 3)){
       drum.start();
       drum.volume.value = -7;
     }
