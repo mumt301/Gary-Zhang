@@ -38,11 +38,14 @@ function m1(){
 }
 
 function b1(){
-    const bass = new Tone.AMSynth().toDestination();
-    let notes2 = [["F2"],
-                  ["D2"],
-                  ["G2"],
-                  ["C2"]];
+
+    const filter = new Tone.Filter(100, 'lowpass').toDestination();
+    const bass = new Tone.FMSynth().toDestination().connect(filter);
+
+    let notes2 = [["F3"],
+                  ["D3"],
+                  ["G3"],
+                  ["C3"]];
     let pattern = 0;
 
     Tone.Transport.bpm.value = 170;
@@ -51,9 +54,63 @@ function b1(){
       if ([0].indexOf(index) >=0){
         var getNote = ([0].indexOf(index));
         bass.triggerAttackRelease(notes2[pattern % 4][getNote]);
-        bass.volume.value = -8;
+        bass.volume.value = -14;
       }
 
+      //update which pattern to use
+      if ([15].indexOf(index)>=0){
+        pattern++;
+      }
+    }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
+
+    Tone.Transport.start('+0.2');
+    seq.start();
+    return seq;
+}
+
+function b2(){
+    const bass = new Tone.FMSynth().toDestination();
+    let notes2 = [["F3","F3","F3","F3","A3"],
+                  ["D3","D3","D3","D3"],
+                  ["G3","G3","G3","G3","A#3"],
+                  ["C3","C3","C3","C3"]];
+    let pattern = 0;
+
+    Tone.Transport.bpm.value = 170;
+    var seq = new Tone.Sequence(function(time, index){
+      //bass pattern
+      if ([0,2,8,10,12].indexOf(index) >=0){
+        var getNote = ([0,2,8,10,12].indexOf(index));
+        bass.triggerAttackRelease(notes2[pattern % 4][getNote], "8n", time);
+        bass.volume.value = -12;
+      }
+      //update which pattern to use
+      if ([15].indexOf(index)>=0){
+        pattern++;
+      }
+    }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
+
+    Tone.Transport.start('+0.2');
+    seq.start();
+    return seq;
+}
+
+function b3(){
+    const bass = new Tone.FMSynth().toDestination();
+    let notes2 = [["A3","A3","A3","A3"],
+                  ["A3","A3","A3","A3"],
+                  ["A#3","A#3","A#3","A#3"],
+                  ["E3","E3","E3","E3"]];
+    let pattern = 0;
+
+    Tone.Transport.bpm.value = 170;
+    var seq = new Tone.Sequence(function(time, index){
+      //bass pattern
+      if ([2,6,10,14].indexOf(index) >=0){
+        var getNote = ([2,6,10,14].indexOf(index));
+        bass.triggerAttackRelease(notes2[pattern % 4][getNote], "8n", time);
+        bass.volume.value = -12;
+      }
       //update which pattern to use
       if ([15].indexOf(index)>=0){
         pattern++;
