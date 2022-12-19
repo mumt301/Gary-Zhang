@@ -1,13 +1,65 @@
 body{
-  background-color: gray;
-  /*text-align: center;*/
-
+ background-color: #82C3EC;
+ text-align: center;
 }
 
+div{
+ padding : 1%;
+ color: white;
+ background-color: #E5BA73;
+ width: 30%;
+ border: solid black;
+        }
 
-.homepage{
+img {
+    float: left;
+    width:  285px;
+    height: 285px;
+    /*object-fit: cover;*/
+    }
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+/******************************************/
+
+
+
+.left{
+    float: left;
+}
+
+.right{
+    float: left;
+  /*  background-color:gray*/
+  }
+.middle{
+    float: left
+}
+
+.font{
+  color: #E9DAC1;
+}
+
+.bottom{
   position:fixed;
   right: 0px;
   bottom: 5px;
   width: 10%;
+}
+
+/**********************************************/
+
+div.Melody:hover{
+  background-color: #8BBCCC;
+}
+
+div.Bass:hover{
+  background-color: #E9DAC1;
+}
+
+div.Drum:hover{
+  background-color: #C7F2A4;
 }

@@ -1,9 +1,5 @@
 "use strict";
 
-var value1 = 20;
-var value2 = 20;
-
-
 function play1(){
   const player = new Tone.Player("https://tonejs.github.io/audio/berklee/hand_drum_.mp3").toDestination();
   Tone.loaded().then(() => {
@@ -25,8 +21,6 @@ player.connect(filter);
 player.connect(feedbackDelay);
 }
 
-
-
 function play3(){
   const filter = new Tone.Filter(200, 'lowpass').toDestination();
   const feedbackDelay = new Tone.FeedbackDelay(0.5, 0.7).toDestination();
@@ -34,13 +28,6 @@ function play3(){
   const melody = new Tone.Synth().toDestination();
   const bass = new Tone.AMSynth().toDestination();
   const drum = new Tone.Player("https://tonejs.github.io/audio/berklee/hand_drum_.mp3").toDestination();
-
-
-  bass.connect(filter);
-  bass.connect(feedbackDelay);
-
-  drum.connect(feedbackDelay);
-  drum.connect(filter);
 
   let notes1 =  [["A4", "A4", "A4", "G4", "F4"],
                 ["F4", "F4", "F4", "A4", "G4"],
@@ -61,9 +48,6 @@ function play3(){
     if ([2,3,5,6,8].indexOf(index) >=0){
       //get the current note index, which goes from 0 to 4
       var getNote = ([2,3,5,6,8].indexOf(index));
-
-      melody.connect(filter);
-      melody.connect(feedbackDelay);
       melody.triggerAttackRelease(notes1[pattern % 4][getNote], "16n", time);
 
       melody.volume.value = -5;
@@ -73,15 +57,11 @@ function play3(){
     //bass pattern
     if ([0].indexOf(index) >=0){
       var getNote = ([0].indexOf(index));
-      bass.connect(filter);
-      bass.connect(feedbackDelay);
       bass.triggerAttackRelease(notes2[pattern % 4][getNote]);
       bass.volume.value = -8;
     }
 
     if ([0,1,4,8,9,12].indexOf(index) >=0){
-      drum.connect(feedbackDelay);
-      drum.connect(filter);
       drum.start();
       drum.volume.value = -7;
     }
@@ -109,12 +89,6 @@ function runAfterLoadingPage(){
   const music3 = document.getElementById("pattern3");
   const sequence = document.getElementById("sequence");
   let loop = null;
-
-  var reverb = document.getElementById("reverb");
-  var delay = document.getElementById("delay");
-
-  var slider1 = document.getElementById("reverbSlider");
-  var slider2 = document.getElementById("delaySlider");
 
   toggle.addEventListener("click", function(){
     console.log("WE ARE TOGGLING");
@@ -148,28 +122,6 @@ function runAfterLoadingPage(){
         loop = null;
         console.log("we stopped, loop is now " + loop);
   });
-
-  reverbSlider.oninput = function(){
-    value1 = slider1.value;
-    if (reverb.checked){
-      console.log("reverb value is " + value1);
-    }
-    else {
-      console.log("reverb is not checked");
-    }
-  }
-
-  delaySlider.oninput = function(){
-    value2 = slider2.value;
-    if (delay.checked){
-      console.log("delay value is " + value2);
-    }
-    else {
-      console.log("delay is not checked");
-    }
-  }
-
-
 }
 
 window.onload = runAfterLoadingPage;
