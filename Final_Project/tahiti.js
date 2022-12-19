@@ -107,8 +107,14 @@ function runAfterLoadingPage(){
   let sigma3 = 0;
 
   const melody1 = document.getElementById("melody1");
+  const melody2 = document.getElementById("melody2");
+  const melody3 = document.getElementById("melody3");
   const bass1 = document.getElementById("bass1");
+  const bass2 = document.getElementById("bass2");
+  const bass3 = document.getElementById("bass3");
   const drum1 = document.getElementById("drum1");
+  const drum2 = document.getElementById("drum2");
+  const drum3 = document.getElementById("drum3");
 
   const sequence = document.getElementById("sequence");
   let loop = null;
@@ -117,6 +123,42 @@ function runAfterLoadingPage(){
     console.log("WE ARE TOGGLING");
     toggle.style.backgroundColor = "green"
     index++;
+
+    if (alpha1 > 0){
+      m1();
+    }
+
+    if (alpha2 > 0){
+      m2();
+    }
+
+    if (alpha3 > 0){
+      m3();
+    }
+
+    if (beta1 > 0){
+      b1();
+    }
+
+    if (beta2 > 0){
+      b2();
+    }
+
+    if (beta3 > 0){
+      b3();
+    }
+
+    if (sigma1 > 0){
+      d1();
+    }
+
+    if (sigma2 > 0){
+      d2();
+    }
+
+    if (sigma3 > 0){
+      d3();
+    }
 
     if (index > 1){
       location.reload();
@@ -136,6 +178,32 @@ function runAfterLoadingPage(){
    }
  });
 
+ melody2.addEventListener("click", async() => {
+  if (melody2.checked){
+    console.log("We are on!");
+    alpha2++;
+    console.log("alpha2 is " + alpha2);
+  }
+  else{
+    console.log("Turned off!");
+    alpha2--;
+    console.log("alpha2 is " + alpha2);
+  }
+});
+  melody3.addEventListener("click", async() => {
+   if (melody3.checked){
+     console.log("We are on!");
+     alpha3++;
+     console.log("alpha3 is " + alpha3);
+   }
+   else{
+     console.log("Turned off!");
+     alpha3--;
+     console.log("alpha3 is " + alpha3);
+   }
+  });
+
+
   bass1.addEventListener("click", async() => {
     if (bass1.checked){
       console.log("We are on!");
@@ -149,6 +217,32 @@ function runAfterLoadingPage(){
     }
  });
 
+   bass2.addEventListener("click", async() => {
+     if (bass2.checked){
+       console.log("We are on!");
+       beta2++;
+       console.log("beta2 is " + beta2);
+     }
+     else{
+       console.log("Turned off!");
+       beta2--;
+       console.log("bass2 is " + beta2);
+     }
+  });
+
+    bass3.addEventListener("click", async() => {
+      if (bass3.checked){
+        console.log("We are on!");
+        beta3++;
+        console.log("beta3 is " + beta3);
+      }
+      else{
+        console.log("Turned off!");
+        beta3--;
+        console.log("beta3 is " + beta3);
+      }
+   });
+
   drum1.addEventListener("click", async() => {
     if (drum1.checked){
       console.log("We are on!");
@@ -161,6 +255,30 @@ function runAfterLoadingPage(){
       console.log("sigma1 is " + sigma1);
     }
  });
+   drum2.addEventListener("click", async() => {
+     if (drum2.checked){
+       console.log("We are on!");
+       sigma2++;
+       console.log("sigma2 is " + sigma2);
+     }
+     else{
+       console.log("Turned off!");
+       sigma2--;
+       console.log("sigma2 is " + sigma2);
+     }
+  });
+    drum3.addEventListener("click", async() => {
+      if (drum3.checked){
+        console.log("We are on!");
+        sigma3++;
+        console.log("sigma3 is currently" + sigma3);
+      }
+      else{
+        console.log("Turned off!");
+        sigma3--;
+        console.log("sigma3 is currently" + sigma3);
+      }
+    });
 
  /*var reverb = document.getElementById("reverb");
  reverbSlider.oninput = function(){
