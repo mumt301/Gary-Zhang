@@ -1,5 +1,9 @@
 "use strict";
 
+var value1 = 20;
+var value2 = 20;
+
+
 function play1(){
   const player = new Tone.Player("https://tonejs.github.io/audio/berklee/hand_drum_.mp3").toDestination();
   Tone.loaded().then(() => {
@@ -8,8 +12,13 @@ function play1(){
 }
 
 
-function play2() {
+/*function play2() {
+
     const synth = new Tone.Synth().toDestination();
+
+    var freeverb = new Tone.Freeverb(0.4).toDestination();
+  //  freeverb.dampening.value = 0;
+    synth.connect(freeverb);
 
     // this time also define a list of durations
     let notes = ["C4", "D4", "D#4", "F4", "G4", "Bb4", "C5", "D5", "Ab4", "Ab3"];
@@ -28,42 +37,20 @@ function play2() {
     Tone.Transport.start();
     return loop;
 
+}*/
+
+function play2(){
+  const player = new Tone.Player({
+	url: "https://tonejs.github.io/audio/drum-samples/loops/ominous.mp3",
+	autostart: true,
+});
+const filter = new Tone.Filter(0, 'highpass').toDestination();
+//const feedbackDelay = new Tone.FeedbackDelay(0.125, 0.5).toDestination();
+
+// connect the player to the feedback delay and filter in parallel
+player.connect(filter);
+//player.connect(feedbackDelay);
 }
-
-/*function play3(){
-  const sampler = new Tone.Sampler({
-  	urls: {
-  		"C4": "C4.mp3",
-  		"D#4": "Ds4.mp3",
-  		"F#4": "Fs4.mp3",
-  		"A4": "A4.mp3",
-  	},
-  	release: 1,
-  	baseUrl: "https://github.com/mumt301/Gary-Zhang/tree/main/Final_Project/sounds/",
-  }).toDestination();
-
-  Tone.loaded().then(() => {
-  	sampler.triggerAttackRelease(["Eb4", "G4", "Bb4"], 4);
-  })
-
-}*/
-
-/*function play3(){
-  const synthA = new Tone.FMSynth().toDestination();
-  const synthB = new Tone.AMSynth().toDestination();
-  //play a note every quarter-note
-  const loopA = new Tone.Loop(time => {
-  	synthA.triggerAttackRelease("C2", "16n", time);
-  }, "4n").start(0);
-  //play another note every off quarter-note, by starting it "8n"
-  const loopB = new Tone.Loop(time => {
-  	synthB.triggerAttackRelease("C4", "16n", time);
-  }, "4n").start("8n");
-  // the loops start when the Transport is started
-  Tone.Transport.start()
-  // ramp up to 800 bpm over 10 seconds
-  Tone.Transport.bpm.rampTo(800, 10);
-}*/
 
 
 
@@ -106,6 +93,7 @@ function play3(){
 
     if ([0,1,4,8,9,12].indexOf(index) >=0){
       drum.start();
+      drum.volume.value = -7;
     }
 
     //update which pattern to use
@@ -114,7 +102,7 @@ function play3(){
     }
   }, [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], "8n");
 
-  Tone.Transport.start('+0.5');
+  Tone.Transport.start('+0.2');
   seq.start();
   return seq;
 }
@@ -122,20 +110,74 @@ function play3(){
 function runAfterLoadingPage(){
 
   //get all relevant divs from the html
+  const toggle = document.getElementById("toggle");
+  const colors = ["green", "white"];
+  let index = 0;
+
+  const music1 = document.getElementById("pattern1");
   const music2 = document.getElementById("pattern2");
+  const music3 = document.getElementById("pattern3");
   const sequence = document.getElementById("sequence");
   let loop = null;
+
+  var reverb = document.getElementById("reverb");
+  var delay = document.getElementById("delay");
+
+  var slider1 = document.getElementById("reverbSlider");
+  var slider2 = document.getElementById("delaySlider");
+
+  toggle.addEventListener("click", function(){
+    console.log("WE ARE TOGGLING");
+    toggle.style.backgroundColor = colors[index%2];
+    index++;
+
+    if (index%2 == 1){
+      console.log("We are on!");
+
+    }
+  });
+
+
+  music1.addEventListener("click", async() => {
+    await Tone.start();
+    loop = play1();
+  });
 
   music2.addEventListener("click", async() => {
     await Tone.start();
     loop = play2();
-    console.log("hello");
+  });
+
+  music3.addEventListener("click", async() => {
+    await Tone.start();
+    loop = play3();
   });
 
   sequence.addEventListener('click', async () => {
         loop.stop();
+        loop = null;
         console.log("we stopped, loop is now " + loop);
   });
+
+  reverbSlider.oninput = function(){
+    value1 = slider1.value;
+    if (reverb.checked){
+      console.log("reverb value is " + value1);
+    }
+    else {
+      console.log("reverb is not checked");
+    }
+  }
+
+  delaySlider.oninput = function(){
+    value2 = slider2.value;
+    if (delay.checked){
+      console.log("delay value is " + value2);
+    }
+    else {
+      console.log("delay is not checked");
+    }
+  }
 
 
 }

@@ -15,15 +15,18 @@
 
     <div class="">
       <table>
+        <td><button type ="button" value = "Click to turn on!" id="toggle">Click to turn on!</button> </td>
+      </table>
+      <table>
         <tr>
           <!-- for-"" denotes the id, which must be unique-->
           <td> <label> select your pattern! </label> </td>
       </table>
       <table>
         <tr>
-          <td><button type="button" onclick="play1();" id="pattern1"> Pattern 1 </button></td>
+          <td><button type="button" id="pattern1"> Pattern 1 </button></td>
           <td><button type="button" id="pattern2"> Pattern 2 </button></td>
-          <td><button type="button" onclick="play3();" id="pattern3"> Pattern 3 </button></td>
+          <td><button type="button" id="pattern3"> Pattern 3 </button></td>
           <td><button type="button" id="sequence"> Stop </button></td>
 
         </tr>
@@ -36,15 +39,15 @@
       </table>
       <table>
         <tr>
-          <td> <label> Reverb </label> <input type="checkbox" onclick="function()" id="reverb"> </td>
-          <td> <label> Delay </label> <input type="checkbox" onclick="function()" id="delay"> </td>
+          <td> <label> Reverb </label> <input type="checkbox" id="reverb"> </td>
+          <td> <label> Delay </label> <input type="checkbox"  id="delay"> </td>
         </tr>
         <tr>
           <td> <label> Wetness range</label>
-          <input type="range" class="slider" min="1" max= "100" value="0" id="" oninput="function()">
+          <input type="range" class="slider" min="1" max= "100" value="20" id="reverbSlider" oninput="function()">
           </td>
           <td> <label> Delay intensity </label>
-          <input type="range" class="slider" min="1" max= "100" value="0" id="" oninput="function()">
+          <input type="range" class="slider" min="1" max= "100" value="20" id="delaySlider" oninput="function()">
           </td>
         </tr>
       </table>
